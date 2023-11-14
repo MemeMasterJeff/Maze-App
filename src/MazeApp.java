@@ -202,8 +202,7 @@ public class MazeApp extends JFrame implements ActionListener {
  	    doFontSize();
  	}
  	if (e.getSource() == stepButton) {
- 	    if (mazeLoaded)
- 		doStep();
+ 	    if (mazeLoaded)doStep();
  	}
  	if (e.getSource() == timer) {
  	    // animate a step

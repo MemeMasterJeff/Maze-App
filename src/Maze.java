@@ -5,8 +5,8 @@ public class Maze{
 
     private Square start;
     private Square finish;
-    private int numRows;
-    private int numCols;
+    private final int numRows;
+    private final int numCols;
     private Square[][] data;
 
     /**
@@ -22,8 +22,8 @@ public class Maze{
     }
 
     public boolean loadMaze (String fname) throws FileNotFoundException {
-        int numRows = 0;
-        int numCols = 0;
+        int numRows;
+        int numCols;
         Scanner scan = new Scanner(new File(fname));
         //gets the size of the maze
         try{
@@ -39,7 +39,7 @@ public class Maze{
         this.data = new Square[numRows][numCols];
         for (int row=0; row < numRows; row++) {
             for (int col=0; col < numCols; col++) {
-                int val = Integer.MAX_VALUE;
+                int val;
                 try {
                     val = scan.nextInt();
                 }catch (NoSuchElementException e){
@@ -64,7 +64,6 @@ public class Maze{
     public ArrayList<Square> getNeighbors(Square sq){
 
         ArrayList<Square> neighbors = new ArrayList<>();
-        Square n1, n2, n3, n4 = null;
         try{
             neighbors.add(this.data[sq.getRow() + 1][sq.getCol()]);
         }catch(ArrayIndexOutOfBoundsException ignored){}

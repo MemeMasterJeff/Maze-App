@@ -4,7 +4,7 @@ import java.util.Stack;
 public abstract class MazeSolver {
 
     protected Maze maze;
-    //this has to be a string for some reason? i was originally trying to do an arraylist of arrays. - will
+    //this has to be a string for some reason? I was originally trying to do an arraylist of arrays. - will
     protected String solutionCoords;
 
     /**
@@ -97,7 +97,7 @@ public abstract class MazeSolver {
                 }
             }
             if(current.getStatus()=='o') {
-                current.setStatus('.');
+                current.explore();
             }
         }
         //returns the square stepped
