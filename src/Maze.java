@@ -39,10 +39,17 @@ public class Maze{
         this.data = new Square[numRows][numCols];
         for (int row=0; row < numRows; row++) {
             for (int col=0; col < numCols; col++) {
-                int val = scan.nextInt();
-                data[row][col] = new Square(row, col, (char)val);
-                if(val == 2){
+                int val = Integer.MAX_VALUE;
+                try {
+                    val = scan.nextInt();
+                }catch (NoSuchElementException e){
+                    System.out.println("Invalid Maze! dataset is smaller than dimensions given!");
+                    return false;
+                }
 
+                data[row][col] = new Square(row, col, (char)val);
+
+                if(val == 2){
                     start = data[row][col];
                 }else if (val == 3) {
                     finish = data[row][col];
@@ -102,9 +109,11 @@ public class Maze{
     }
 
     public void reset(){
-        for (Square[] squares : data) {
-            for (Square i : squares) {
-                i.reset();
+        if(data != null) {
+            for (Square[] squares : data) {
+                for (Square i : squares) {
+                    i.reset();
+                }
             }
         }
     }
